@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: 'Deploy static content to Pages'
+name: "Deploy static content to Pages"
 
 on:
     # Runs on pushes targeting the default branch
@@ -15,13 +15,18 @@ permissions:
     pages: write
     id-token: write
 
+# Allow one concurrent deployment
+concurrency:
+    group: 'pages'
+    cancel-in-progress: true
+
 env:
     NODE_VERSION: 18.17.1
     VITE_BASEURL: ${{ secrets.VITE_BASENAME }}
 
 jobs:
-    # Single deploy job since we're just deploying
     deploy:
+        name: "Deploy Vite App to GitHub Pages"
         environment:
             name: production
         runs-on: ubuntu-latest
