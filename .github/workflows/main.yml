@@ -41,13 +41,13 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ env.NODE_VERSION }}
-                  cache: 'npm'
+                  cache: 'yarn'
 
             - name: "🔧 Install dependencies"
-              run: npm install
+              run: yarn install
   
             - name: "🏗️ Build"
-              run: npm run build
+              run: yarn run build
 
             - name: "📦 Upload artifact"
               uses: actions/upload-artifact@v3

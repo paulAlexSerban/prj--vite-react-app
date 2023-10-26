@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build:dev": "export=NODE_ENV=development && vite build",
-    "build:prod": "export=NODE_ENV=production && vite build",
+    "build:dev": "export=VITE_NODE_ENV=development && vite build",
+    "build:prod": "export=VITE_NODE_ENV=production && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

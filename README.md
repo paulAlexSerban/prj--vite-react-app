@@ -1,1 +1,1 @@
-# [Vite React App (Template)](https://paulalexserban.github.io/prj--vite-react-app/)
+# [Vite React App (Template)](https://paulalexserban.github.io/tpl--vite-react-app/)
