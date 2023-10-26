@@ -73,12 +73,37 @@ jobs:
             - name: '🏗️ Build'
               run: yarn run test:unit
 
+    integrationTest:
+        name: 'Integration Test'
+        environment:
+            name: production
+        runs-on: ubuntu-latest
+        needs: [lint, test]
+
+        steps:
+            - name: '📥 checkout repository'
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: '🔧  Setup NodeJS ${{ env.NODE_VERSION }}'
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'yarn'
+
+            - name: '🔧 Install dependencies'
+              run: yarn install
+
+            - name: '🏗️ Build'
+              run: yarn run test:integration
+
     build:
         name: 'Build'
         environment:
             name: production
         runs-on: ubuntu-latest
-        needs: [lint, test]
+        needs: [lint, test, integrationTest]
         steps:
             - name: '📥 checkout repository'
               uses: actions/checkout@v4

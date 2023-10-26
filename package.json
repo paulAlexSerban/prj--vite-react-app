@@ -9,7 +9,8 @@
     "build:prod": "export=VITE_NODE_ENV=production && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test:unit": "echo 'No unit tests yet.'"
+    "test:unit": "echo 'No unit tests yet.'",
+    "test:integration": "echo 'No integration tests yet.'"
   },
   "dependencies": {
     "react": "^18.2.0",
