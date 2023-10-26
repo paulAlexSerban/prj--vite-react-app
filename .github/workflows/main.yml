@@ -22,7 +22,7 @@ concurrency:
 
 env:
     NODE_VERSION: 18.17.1
-    VITE_BASEURL: ${{ secrets.VITE_BASENAME }}
+    VITE_BASENAME: ${{ secrets.VITE_BASENAME }}
 
 jobs:
     lint:
