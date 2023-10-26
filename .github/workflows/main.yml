@@ -25,11 +25,36 @@ env:
     VITE_BASEURL: ${{ secrets.VITE_BASENAME }}
 
 jobs:
+    lint:
+      name: "Lint Code"
+      environment:
+        name: production
+      runs-on: ubuntu-latest
+
+      steps:
+          - name: "📥 checkout repository"
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+
+          - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
+            uses: actions/setup-node@v3
+            with:
+                node-version: ${{ env.NODE_VERSION }}
+                cache: 'yarn'
+
+          - name: "🔧 Install dependencies"
+            run: yarn install
+
+          - name: "🏗️ Build"
+            run: yarn run lint
+    
     deploy:
         name: "Deploy Vite App to GitHub Pages"
         environment:
             name: production
         runs-on: ubuntu-latest
+        needs: [lint]
         steps:
             - name: "📥 checkout repository"
               uses: actions/checkout@v4
